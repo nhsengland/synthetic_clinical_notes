@@ -44,7 +44,7 @@ def generate_random_person(
         names = patient_df[["GENDER", "FIRST", "MIDDLE", "LAST"]].sample(1).values[0]
         
     person_gender = names[0]
-    clean_names = [name for name in names[1:] if name is not None]
+    clean_names = [name for name in names[1:] if not pd.isna(name)]
     person_name = ' '.join(clean_names)
     
     if last_name_only:
@@ -416,8 +416,8 @@ class generate_admissions():
                 ]
 
             
-            df = df[(df["Admitted_Flag"] == 1) & (df["age_lower"] >= PARAMS["pipeline_config"]["minimum_patient_age"]) &  (df["age_upper"] <= PARAMS["pipeline_config"]["maximum_patient_age"])]
-            df = df[columns_to_keep + ["age_lower", "age_upper", "Sex_Category", "count", "Der_Spell_LoS"]]
+            df = df[(df["age_lower"] >= PARAMS["pipeline_config"]["minimum_patient_age"]) &  (df["age_upper"] <= PARAMS["pipeline_config"]["maximum_patient_age"])]
+            df = df[columns_to_keep + ["age_lower", "age_upper", "Sex_Category", "count"]]
             
             return df
 
@@ -819,7 +819,7 @@ class generate_journeys():
                     EVENT_TYPE = event["event_type"],
                     EVENT_TYPE_DESCRIPTION = event_type_description,
                     ADMISSION_DATE = admission_date,
-                    DISCHARE_DATE = discharge_date_string,
+                    DISCHARGE_DATE = discharge_date_string,
                     CURRENT_DATE = event["date"],
                     CURRENT_TIME = event["time"],
                     DAYS_LEFT = days_left,
@@ -1385,7 +1385,7 @@ class generate_clinical_notes():
                         if PARAMS["pipeline_config"]["simple_template_only"]:
                             note["Issues"] = self.remove_structures(note["Issues"])
                         else:
-                            for issue, details in note["Issues"].items():
+                             
                                 note["Issues"][issue] = clean_outputs([details], "list", self.model)[0]
                 notes, removed_ids = remove_failures(notes)
                 if removed_ids:

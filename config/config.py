@@ -18,7 +18,7 @@ CONFIG = {
         "operation": "This is when the patient undergoes an operation. This event requires a specilist surgical doctor.",
         "post-anaesthesia recovery": "This is necessary after general, epidural or spinal anaesthesia. The patient is observed by an anaesthetist until they have stable cardiovascular and respiratory systems and are awake and able to communicate.",
         "inter-specialty review": "This is when a senior doctor from a *different* specialty is asked to advise on the patient's care.", # not used in respiratory specialty
-        "nursing" : "This could include charting events such as documenting medications administered, vital signs, physical assessments, and interventions. They could also include a description of a nursing visit, a specific care event, or a summary of care.",
+        #"nursing" : "This could include charting events such as documenting medications administered, vital signs, physical assessments, and interventions. They could also include a description of a nursing visit, a specific care event, or a summary of care.",
         "misc" : "This could include next of kin being contacted, GPs contacted, capacity information, or consent information. They could also be part of a different event but that wasn't the clinical part of the event, just some admin that was done. This will be a very short and basic event, with only one thing occuring in each event.",
         "therapy": "This could include encounters such as physical therapies, speech and language therapies and dietary therapies among others depending on patient needs.",
         }, # Event types to NOT filter out
