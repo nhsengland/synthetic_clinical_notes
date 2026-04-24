@@ -5,7 +5,7 @@
 PARAMS = {
     "pipeline_config": {
         "TEST_MODE": False, # If True, runs pipeline in test mode and generates one clinical note per patient
-        "model" : "GPT_4o", # The name of the LLM you would like to us.
+        "model" : "ri.language-model-service..language-model.gpt-5-1", # The name of the LLM you would like to us.
         "generate_patient_information": True, # If True, generate patient information
         "generate_admission_information": True, # If True, generate admission details for patients
         "generate_patient_journey": True, # If True, generate patient journey
@@ -17,7 +17,7 @@ PARAMS = {
         "ae_start_hour": 0, # The starting hour for A&E admissions. (This is 24 hours)
         "ae_end_hour": 22, # The starting hour for A&E admissions. (This is 24 hours)
         "filter_journey": True, # If true, filters out events NOT in possible_event_types
-        "simple_template_only":True, # If true, it will try to remove structure from the notes.
+        "simple_template_only":False, # If true, it will try to remove structure from the notes.
         "generate_clinical_notes": True, # If True, generates clinical notes
         "LLM_validator_iterations_clinical_note": 1, # The number of times an LLM validator should be used for each clinical note generation
         "LLM_validator_iterations_patient_journey": 1, # The number of times an LLM validator should be used for each journey generation
@@ -39,9 +39,9 @@ PARAMS = {
         "maximum_patient_age": 90,# Maximum patient age when generating patient admission
         "site_name": "Apple Tree Trust", # None, or name of trust
         "site_code": "APT12", # None, or code of trust
-        "elective_admissions_dataset" : "combined_elective_data", # Name of dataset to read elective admissions
-        "emergency_admissions_dataset" : "disease_x_complaint_stats", # Name of dataset to read emergency admissions
-        "patients_input_dataset" : "patients_v1", # Name of dataset containing patients input data, such as names
+        "elective_admissions_dataset" : "example_elective_admissions_data", # Name of dataset to read elective admissions
+        "emergency_admissions_dataset" : "example_emergency_admissions_data", # Name of dataset to read emergency admissions
+        "patients_input_dataset" : "example_names_input_data", # Name of dataset containing patients input data, such as names
     },
 }
 
