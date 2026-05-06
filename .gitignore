@@ -10,3 +10,4 @@ data/*
 !data/example_elective_admissions_data.csv
 !data/example_emergency_admissions_data.csv
 !data/example_names_input_data.csv
+!data/orthopaedic_emergency_admissions_data.csv

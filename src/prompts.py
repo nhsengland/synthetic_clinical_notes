@@ -214,8 +214,10 @@ patient_journey_prompts = {
         - The first few events should be 'ED event' notes.
         - The journey should contain exactly one 'ED review and hand-over' event.
         - After the ED summary, there should be exactly one 'emergency_admission' event. """,
-    
-    
+
+    "orthopaedic_emergency_admission_instructions_prompt" : """
+        - If the patient has an orthopaedic admission, the journey should contain exactly one 'orthopaedic referral' event. This is a letter written to an Orthopaedics specialist. It should occur if the patient has a non-urgent orthopaedics admission which needs a future appointment in a few days time.""",
+
     "emergency_surgery_instructions_prompt" : """
         - Since this surgery is non-elective, no additional 'pre-op assessment' clinic is needed.
         - After the 'post take ward round', if anaesthesia is needed, the journey should contain an 'anaesthetics assessment' event.
@@ -276,10 +278,10 @@ patient_journey_prompts = {
         # Instructions
         
         - Write a realistic series of documented events in a patient journey given the following admission details. You must include the entire sequence of events from start to finish.
-        - The suggested event types you can use are ${POSSIBLE_EVENT_TYPES}, although you may include any events you feel are realistic. This can include events not in this list if it adds to the clinical realism.${ADMISSION_INSTRUCTIONS}
+        - The suggested event types you can use are ${POSSIBLE_EVENT_TYPES}, although you may include any events you feel are realistic. This can include events not in this list if it adds to the clinical realism.${ADMISSION_INSTRUCTIONS}${ORTHOPAEDIC_REFERRAL_INSTRUCTION}
         - The journey should contain exactly one 'post take ward round' event, which should occur on the day of admission or the day after.${EMERGENCY_SURGERY_INSTRUCTIONS}
         - There should be at least one 'general ward round' or 'post take ward round' per day while the patient is in hospital.${NURSING_NOTE_INSTRUCTION}${THERAPY_NOTE_INSTRUCTION}${MISC_NOTE_INSTRUCTION}${INTER_SPECIALITY_REVIEW_INSTRUCTION}
-        - For each event, include the  date and time of the event.
+        - For each event, include the date and time of the event.
         - The admission date is ${ADMISSION_DATE} and the admission time is ${ADMISSION_TIME}, and the estimated discharge date is ${DISCHARGE_DATE}. The journey must last ${LENGTH_OF_STAY} days with around ${APPROX_EVENTS_PER_DAY} events per day, resulting in around ${NUMBER_OF_EVENTS} total events. You may add more events in a single day if clinically realistic. 
         ${ADMISSION_REASON}
 

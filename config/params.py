@@ -9,7 +9,7 @@ PARAMS = {
         "generate_patient_information": True, # If True, generate patient information
         "generate_admission_information": True, # If True, generate admission details for patients
         "generate_patient_journey": True, # If True, generate patient journey
-        "number_of_generations": 15, # The number of patient journeys to generate
+        "number_of_generations": 1, # The number of patient journeys to generate
         "admission_start": "2026-01-01", # The start of the range of when admissions can happen.
         "admission_end": "2026-01-07", # The start of the range of when admissions end. 
         "elective_start_hour": 7, # The starting hour for elective admissions. (This is 24 hrs)
@@ -30,7 +30,7 @@ PARAMS = {
         "generate_new_staff_per_patient": True, # If True, generates unique staff members for each patient. Else, each patient has the same members of staff.
         "complex_journey_rate": 0.0, # The rate to include complex journeys - those containing medical contradictions and multiple possible diagnoses.
         "novel_disease_rate": 0, # For the table this sets it as a novel disease rate.
-        "elective_admission_rate": 0.5, # The chance of a patient having an elective admission as opposed to emergency
+        "elective_admission_rate": 0, # The chance of a patient having an elective admission as opposed to emergency
         "use_rare_admissions": True, # If true, includes rare reasons for admissions
         "combine_sections": True, # If True then some staff members will combine template sections when writing patient notes.
         "add_signature": True, # If True, adds staff signature to end of note.
@@ -40,7 +40,7 @@ PARAMS = {
         "site_name": "Bramble Trust", # None, or name of trust
         "site_code": "BRT12", # None, or code of trust
         "elective_admissions_dataset" : "example_elective_admissions_data", # Name of dataset to read elective admissions
-        "emergency_admissions_dataset" : "example_emergency_admissions_data", # Name of dataset to read emergency admissions
+        "emergency_admissions_dataset" : "orthopaedic_emergency_admissions_data", # Name of dataset to read emergency admissions
         "patients_input_dataset" : "example_names_input_data", # Name of dataset containing patients input data, such as names
     },
 }

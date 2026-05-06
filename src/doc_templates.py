@@ -313,6 +313,11 @@ document_templates = {
         "note_type": "Type of note.",
         "Content": "The content of the note can be in any order and can combine sections. Please use the content information to fill out this section. Do NOT write in markdown.",
     },
+    "orthopaedic referral": {
+        "note_subject": "A short title for the note. Usually heavily abbreviated.",
+        "note_type": "orthopaedic referral",
+        "Content": "Written in plain text (NOT markdown). A concise, professional orthopaedic referral letter in a semi-structured clinical style. The letter should follow a logical flow: an optional header (date, addressee, patient identifiers if provided), a brief opening sentence indicating referral, a short paragraph summarising relevant background (past medical history and medications only if available), and a clear, well-written description of the presenting complaint (including mechanism of injury, key symptoms, examination findings, and any investigations or management already performed). The tone should be formal but natural, allowing slight variation in phrasing rather than rigid templating. Include a polite closing that invites specialist input. Only include details explicitly provided in the source information, and omit any sections where information is missing rather than inventing content.",
+    }
 }
 
 # Keys should already exist in the template
@@ -367,6 +372,9 @@ template_sections_to_combine = {
         "Content": [],
     },
     "post-anaesthesia recovery": {
+        "Content": [],
+    },
+    "orthopaedic referral": {
         "Content": [],
     },
     

@@ -21,6 +21,7 @@ CONFIG = {
         "nursing" : "This could include charting events such as documenting medications administered, vital signs, physical assessments, and interventions. They could also include a description of a nursing visit, a specific care event, or a summary of care.",
         "misc" : "This could include next of kin being contacted, GPs contacted, capacity information, or consent information. They could also be part of a different event but that wasn't the clinical part of the event, just some admin that was done. This will be a very short and basic event, with only one thing occuring in each event.",
         "therapy": "This could include encounters such as physical therapies, speech and language therapies and dietary therapies among others depending on patient needs.",
+        "orthopaedic referral": "orthopaedic referral must occur after initial assessment for an orthopaedic condition. This is when an orthopaedic surgeon is asked to review the patient and provide their expert opinion on the management of a musculoskeletal problem. This event requires an orthopaedic surgeon.",
         }, # Event types to NOT filter out
     "doctor_roles" : [
         "ED Doctor",
@@ -29,6 +30,7 @@ CONFIG = {
         "Specialty Registrar",
         "Consultant",
         "Surgeon",
+        "Orthopaedic Surgeon"
     ],
     "therapist_roles" : [
         "Speech and Language",

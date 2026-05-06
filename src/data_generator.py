@@ -661,10 +661,12 @@ class generate_journeys():
         misc_note_instruction = patient_journey_prompts["misc_note_instruction_prompt"] if "misc" in CONFIG["possible_event_types"].keys() else ""
         therapy_note_instruction = patient_journey_prompts["therapy_note_instruction_prompt"] if "therapy" in CONFIG["possible_event_types"].keys() else ""
         inter_speciality_review_instruction = patient_journey_prompts["inter_speciality_review_instruction_prompt"] if "inter-speciality review" in CONFIG["possible_event_types"].keys() else ""
-    
+        orthopedic_referral_instruction = patient_journey_prompts["orthopaedic_emergency_admission_instructions_prompt"] if "orthopaedic referral" in CONFIG["possible_event_types"].keys() else ""
+
         prompt = patient_journey_prompts["simple_patient_journey_prompt"].substitute(
             POSSIBLE_EVENT_TYPES = [key for key in CONFIG["possible_event_types"].keys()],
             ADMISSION_INSTRUCTIONS = admission_instructions,
+            ORTHOPAEDIC_REFERRAL_INSTRUCTION = orthopedic_referral_instruction,
             EMERGENCY_SURGERY_INSTRUCTIONS = emergency_surgery_instructions,
             NURSING_NOTE_INSTRUCTION = nursing_note_instruction,
             THERAPY_NOTE_INSTRUCTION = therapy_note_instruction,
@@ -679,7 +681,6 @@ class generate_journeys():
             ADMISSION_REASON = admission_reason,
             OUTPUT_FORMAT = json.dumps(document_templates["event"], indent = 2)
         )
-    
         return prompt
 
     
@@ -1224,6 +1225,9 @@ class generate_clinical_notes():
                 )
             else:
                 examination_info = ""
+
+            if event_type in ["orthopaedic referral"]:
+                persona = "Concise yet professional."
     
             if event_type in ["ED review and hand-over", "emergency_admission"]:
                 red_flag_symptoms = self.generate_red_flags(model, patient_info, journey_event, journey_events)
@@ -1410,6 +1414,8 @@ class generate_clinical_notes():
                     sections_to_combine = [list_of_staff_personas.get(staff_member).get("template_combine_sections").get(j.get("event_type"))
                                           for j, staff_member in zip(journey_row, staff_members)]
                     for note, sections in zip(notes, sections_to_combine):
+                        print(note)
+                        print(sections)
                         for section, combine_sections in sections.items():
                             try:
                                  note = combine_template_sections(section, combine_sections, note)
