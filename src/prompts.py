@@ -216,7 +216,7 @@ patient_journey_prompts = {
         - After the ED summary, there should be exactly one 'emergency_admission' event. """,
 
     "orthopaedic_emergency_admission_instructions_prompt" : """
-        - If the patient has an orthopaedic admission, the journey should contain exactly one 'orthopaedic referral' event. This is a letter written to an Orthopaedics specialist. It should occur if the patient has a non-urgent orthopaedics admission which needs a future appointment in a few days time.""",
+        - If the patient has an orthopaedic admission, the journey could contain exactly one 'orthopaedic referral' event. This is a letter written to an Orthopaedics specialist. It should occur if the patient has a non-urgent orthopaedics admission which needs a future appointment in a few days time.""",
 
     "emergency_surgery_instructions_prompt" : """
         - Since this surgery is non-elective, no additional 'pre-op assessment' clinic is needed.
@@ -240,14 +240,16 @@ patient_journey_prompts = {
     You must use the information in a clinically sensible order and all novel wording must be used.
         """),
             
+    "orthopaedic_elective_admission_instructions_prompt" : """
+        - The first event in the journey should be an 'orthopaedic referral'. This is a referral letter from a GP/clinician and should occur at least 4 weeks before the admission.""",
     
-    "elective_admission_instructions_prompt" : """
-        - The first event in the journey should be a 'pre-op assessment' event. This should occur 1-2 weeks before the admission.
+    "elective_admission_instructions_prompt" : Template("""${ORTHOPAEDIC_INSTRUCTION}
+        - There must be a 'pre-op assessment' event which should occur 1-2 weeks before the admission.
         - If anaesthesia is required, the 'pre-op assessment' should be followed by an 'anaesthetics assessment' event, usually on the same day.
         - After this there should be a 'pre-op consent' event and a 'pre-op checklist' event. These should also be on the same day as the 'pre-op assessment'.
         - On the day of surgery, there should be exactly one 'elective admission' event.
         - The actual operation should be represented by an 'operation' event.
-        - If relevant, the operation should be followed by a 'post-anaesthesia recovery' event.""",
+        - If relevant, the operation should be followed by a 'post-anaesthesia recovery' event."""),
 
     
     "elective_admission_reason_prompt" : Template("""
@@ -262,7 +264,7 @@ patient_journey_prompts = {
         - There should be at least a couple 'misc' events per patient journey.""",
 
     
-     "therapy_note_instruction_prompt" : """
+    "therapy_note_instruction_prompt" : """
         - Most patients should have 1-2 'therapy' events per day while the patient is in hospital.""",
 
     
@@ -282,8 +284,7 @@ patient_journey_prompts = {
         - The journey should contain exactly one 'post take ward round' event, which should occur on the day of admission or the day after.${EMERGENCY_SURGERY_INSTRUCTIONS}
         - There should be at least one 'general ward round' or 'post take ward round' per day while the patient is in hospital.${NURSING_NOTE_INSTRUCTION}${THERAPY_NOTE_INSTRUCTION}${MISC_NOTE_INSTRUCTION}${INTER_SPECIALITY_REVIEW_INSTRUCTION}
         - For each event, include the date and time of the event.
-        - The admission date is ${ADMISSION_DATE} and the admission time is ${ADMISSION_TIME}, and the estimated discharge date is ${DISCHARGE_DATE}. The journey must last ${LENGTH_OF_STAY} days with around ${APPROX_EVENTS_PER_DAY} events per day, resulting in around ${NUMBER_OF_EVENTS} total events. You may add more events in a single day if clinically realistic. 
-        ${ADMISSION_REASON}
+        - The admission date is ${ADMISSION_DATE} and the admission time is ${ADMISSION_TIME}, and the estimated discharge date is ${DISCHARGE_DATE}. The journey must last ${LENGTH_OF_STAY} days with around ${APPROX_EVENTS_PER_DAY} events per day, resulting in around ${NUMBER_OF_EVENTS} total events. You may add more events in a single day if clinically realistic. ${ADMISSION_REASON}
 
         # Output Format
         

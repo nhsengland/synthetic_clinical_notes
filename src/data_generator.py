@@ -649,19 +649,21 @@ class generate_journeys():
                 CHIEF_COMPLAINT = admission["admission_details"]["chief_complaint"],
                 DIAGNOSIS = admission["admission_details"]["ED_diagnosis"]
             )
+            orthopedic_referral_instruction = patient_journey_prompts["orthopaedic_emergency_admission_instructions_prompt"] if "orthopaedic referral" in CONFIG["possible_event_types"].keys() else ""
     
         else: # elective surgery
-            admission_instructions = patient_journey_prompts["elective_admission_instructions_prompt"]
+            admission_instructions = patient_journey_prompts["elective_admission_instructions_prompt"].substitute(
+                ORTHOPAEDIC_INSTRUCTION = patient_journey_prompts["orthopaedic_elective_admission_instructions_prompt"] if "orthopaedic referral" in CONFIG["possible_event_types"].keys() else ""
+            )
             admission_reason = patient_journey_prompts["elective_admission_reason_prompt"].substitute(
                 PROCEDURE = admission["admission_details"]["procedure"]
             )
+            orthopedic_referral_instruction = ""
 
-    
         nursing_note_instruction = patient_journey_prompts["nursing_note_instruction_prompt"] if "nursing" in CONFIG["possible_event_types"].keys() else ""
         misc_note_instruction = patient_journey_prompts["misc_note_instruction_prompt"] if "misc" in CONFIG["possible_event_types"].keys() else ""
         therapy_note_instruction = patient_journey_prompts["therapy_note_instruction_prompt"] if "therapy" in CONFIG["possible_event_types"].keys() else ""
         inter_speciality_review_instruction = patient_journey_prompts["inter_speciality_review_instruction_prompt"] if "inter-speciality review" in CONFIG["possible_event_types"].keys() else ""
-        orthopedic_referral_instruction = patient_journey_prompts["orthopaedic_emergency_admission_instructions_prompt"] if "orthopaedic referral" in CONFIG["possible_event_types"].keys() else ""
 
         prompt = patient_journey_prompts["simple_patient_journey_prompt"].substitute(
             POSSIBLE_EVENT_TYPES = [key for key in CONFIG["possible_event_types"].keys()],
@@ -681,12 +683,13 @@ class generate_journeys():
             ADMISSION_REASON = admission_reason,
             OUTPUT_FORMAT = json.dumps(document_templates["event"], indent = 2)
         )
+
         return prompt
 
     
     def test_events_complete_prompts(self, events):
         """
-        Creates a list of prompts which will check if an enitre journey has been generated.
+        Creates a list of prompts which will check if an entire journey has been generated.
         """
         prompts = []
     
