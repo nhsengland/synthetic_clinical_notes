@@ -5,7 +5,7 @@
 PARAMS = {
     "pipeline_config": {
         "TEST_MODE": False, # If True, runs pipeline in test mode and generates one clinical note per patient
-        "model" : "ri.language-model-service..language-model.gpt-4-o", # The name of the LLM you would like to use. 
+        "model" : "ri.language-model-service..language-model.gpt-5-1", # The name of the LLM you would like to use. 
         "generate_patient_information": True, # If True, generate patient information
         "generate_admission_information": True, # If True, generate admission details for patients
         "generate_patient_journey": True, # If True, generate patient journey
