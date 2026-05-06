@@ -1,38 +1,38 @@
-﻿Age_Category,Sex_Category,ChiefComplaintDescription,DiagnosisDescription,rare_disease,NovelDiseaseFlag,AdditionalSymptoms,AdditionalInformation,ConfirmedBy,SupportedBy
-18-40,Male,Sudden severe chest pain (finding),Spontaneous pneumomediastinum,1,0,null,null,null,null
-41-80,Male,Acute confusion after minor fall (finding),Subdural hygroma,1,0,null,null,null,null
-18-40,Female,Severe headache after exertion (finding),Reversible cerebral vasoconstriction syndrome,1,0,null,null,null,null
-41-80,Female,Progressive breathlessness (finding),Chronic thromboembolic pulmonary hypertension,1,0,null,null,null,null
-18-33,Female,Headache (finding),Bacterial Meningitis confirmed by lumbar puncture procedure (disorder),0,0,null,null,null,null
-18-33,Male,Shortness of breath (finding),Asthma (disorder),0,0,null,null,null,null
-34-50,Male,Abdominal pain (finding),Appendicitis (disorder),0,0,null,null,null,null
-34-50,Female,Abdominal pain (finding),Appendicitis (disorder),0,0,null,null,null,null
-51-69,Female,Shortness of breath (finding),Lower respiratory tract infection (disorder),0,0,null,null,null,null
-51-69,Male,Shortness of breath (finding),COPD exacerbation (disorder),0,0,null,null,null,null
-70-75,Male,Fatigue (finding),Sepsis secondary to pneumonia (disorder),0,0,null,null,null,null
-76-80,Male,Chest pain (finding),Acute non-ST segment elevation myocardial infarction (disorder),0,0,null,null,null,null
-81-84,Male,Injury of lower extremity (disorder),Closed fracture of hip following a mechanical fall (disorder),0,0,null,null,null,null
-85+,Male,Injury of lower extremity (disorder),Vasovagal collapse with associated closed fracture of hip (disorder),0,0,null,null,null,null
-70+,Female,Acute confusion (finding),Delirium secondary to urinary tract infection (disorder),0,0,null,null,null,null
-0-4,Male,Poor feeding (finding),Viral illness,0,0,null,null,null,null
-05-Aug,Male,Abdominal pain (finding),Constipation,0,0,null,null,null,null
-09-Dec,Male,Wheeze (finding),Asthma exacerbation,0,0,null,null,null,null
-13-16,Male,Headache (finding),Tension headache,0,0,null,null,null,null
-Oct-16,Male,Right lower abdominal pain (finding),Appendicitis,0,0,null,null,null,null
-0-4,Female,Fever (finding),Viral infection,0,0,null,null,null,null
-05-Aug,Female,Vomiting (finding),Gastroenteritis,0,0,null,null,null,null
-09-Dec,Female,Sore throat (finding),Tonsillitis,0,0,null,null,null,null
-13-16,Female,Lower abdominal pain (finding),Urinary tract infection,0,0,null,null,null,null
-01-Apr,Female,Ear pain (finding),Otitis media,0,0,null,null,null,null
-0-4,Male,Fever (Finding),"Nordipox-B Variant (NNV-B), a zoonotic viral infection",0,1,"Purpuric-like Rash, Lethargy, Poor Feeding",Household exposure to pets in an area reporting NNV-B cases,NNV-B detected by PCR from lesion swab,"NB rash, mild lymphocytosis, raised CRP"
-0-4,Female,Fever (Finding),"Nordipox-B Variant (NNV-B), a zoonotic viral infection",0,1,"Purpuric-like Rash, Irritability, Vomiting",Exposure via caregiver during local NNV-B outbreak,NNV-B1 detected by multiplex PCR from blood,"NB rash, mild lymphocytosis, mild CRP elevation"
-05-Sep,Male,Fever (Finding),"Nordipox-B Variant (NNV-B), a zoonotic viral infection",0,1,"Rash, Lethargy, Intermittent Weakness, Mild Malaise",Recent exposure to small mammals in an area reporting NNV-B cases,NNV-B detected by PCR from rash swab,"NB rash, mild lymphocytosis, raised CRP"
-05-Sep,Female,Seizures (Finding),"Nordipox-B Variant (NNV-B), a zoonotic viral infection",0,1,"Fever, Purpuric-like Rash, Lethargy, Myalgia",Household contact with a confirmed NNV-Beta case during local outbreak,B-V variant detected by PCR from skin lesion,"NB rash, mild lymphocytosis, post-ictal confusion"
-Oct-17,Male,Fever (Finding),"Nordipox-B Variant (NNV-B), a zoonotic viral infection",0,1,"Respiratory Distress, Myalgia, Headache, Purpuric-like Rash, Mild Fatigue",Recent travel to a region with documented Nordipox-X1 transmission,NNV-B confirmed by multiplex PCR from blood sample,"NB rash, tachypnea, mild lymphocytosis"
-Oct-17,Female,Confusion (Finding),"Nordipox-B Variant (NNV-B), a zoonotic viral infection",0,1,"Purpuric-like Rash, Intermittent Weakness, Headache, Mild Malaise",Exposure to wildlife handling during school outdoor activities in affected area,NB-V detected by PCR from rash swab,"NB rash, altered GCS, mild CRP elevation"
-18-50,Female,Fever (Finding),"Nordipox-B Variant (NNV-B), a zoonotic viral infection",0,1,"Confusion, Respiratory Distress, Myalgia, Purpuric-like Rash, Fatigue",Returned from international travel where NNV-B1 outbreak was reported,Expanded molecular panel detecting NNV-B1 clade from blood,"NB rash, tachypnea, mild lymphocytosis, raised CRP"
-18-50,Male,Fever (Finding),"Nordipox-B Variant (NNV-B), a zoonotic viral infection",0,1,"Rash, Mild Fever, Myalgia, Intermittent Weakness","Close contact with infected individual at shared accommodation, spillover window",NNV-B1 detected by multiplex PCR from serum,"NB rash, mild lymphocytosis, CRP mildly raised"
-51-69,Male,Fever (Finding),"Nordipox-B Variant (NNV-B), a zoonotic viral infection",0,1,"Purpuric-like Rash, Myalgia, Intermittent Weakness, Mild Malaise",History of gardening and exposure to wild rodents in endemic area,NNV-B variant confirmed by PCR from lesion swab,"NB rash, mild lymphocytosis, CRP mildly raised"
-51-69,Female,Confusion (Finding),"Nordipox-B Variant (NNV-B), a zoonotic viral infection",0,1,"Respiratory Distress, Intermittent Weakness, Rash, Mild Malaise",Recent travel to rural area experiencing NNV-B outbreak,NB-V detected by PCR from blood sample,"NB rash, altered GCS, mild lymphocytosis"
-70+,Male,Fever (Finding),"Nordipox-B Variant (NNV-B), a zoonotic viral infection",0,1,"Respiratory Distress, Purpuric-like Rash, Lethargy, Fatigue",Close contact with family member recently diagnosed with Nordipox-Zeta,NNV-B1 detected by multiplex PCR from blood,"NB rash, tachypnea, mild lymphocytosis, raised CRP"
-70+,Female,Lethargy (Finding),"Nordipox-B Variant (NNV-B), a zoonotic viral infection",0,1,"Purpuric-like Rash, Intermittent Weakness, Confusion, Mild Malaise",Residence in long-term care facility with confirmed NNV-Beta cases,Expanded molecular panel detecting NNV-B1 clade from serum,"NB rash, altered GCS, mild lymphocytosis"
+﻿Age_Category,Sex_Category,ChiefComplaintDescription,DiagnosisDescription,rare_disease,NovelDiseaseFlag,AdditionalSymptoms,AdditionalInformation,ConfirmedBy,SupportedBy,count
+18-40,Male,Sudden severe chest pain (finding),Spontaneous pneumomediastinum,1,0,null,null,null,null,1
+41-80,Male,Acute confusion after minor fall (finding),Subdural hygroma,1,0,null,null,null,null,1
+18-40,Female,Severe headache after exertion (finding),Reversible cerebral vasoconstriction syndrome,1,0,null,null,null,null,1
+41-80,Female,Progressive breathlessness (finding),Chronic thromboembolic pulmonary hypertension,1,0,null,null,null,null,1
+18-33,Female,Headache (finding),Bacterial Meningitis confirmed by lumbar puncture procedure (disorder),0,0,null,null,null,null,1
+18-33,Male,Shortness of breath (finding),Asthma (disorder),0,0,null,null,null,null,1
+34-50,Male,Abdominal pain (finding),Appendicitis (disorder),0,0,null,null,null,null,1
+34-50,Female,Abdominal pain (finding),Appendicitis (disorder),0,0,null,null,null,null,1
+51-69,Female,Shortness of breath (finding),Lower respiratory tract infection (disorder),0,0,null,null,null,null,1
+51-69,Male,Shortness of breath (finding),COPD exacerbation (disorder),0,0,null,null,null,null,1
+70-75,Male,Fatigue (finding),Sepsis secondary to pneumonia (disorder),0,0,null,null,null,null,1
+76-80,Male,Chest pain (finding),Acute non-ST segment elevation myocardial infarction (disorder),0,0,null,null,null,null,1
+81-84,Male,Injury of lower extremity (disorder),Closed fracture of hip following a mechanical fall (disorder),0,0,null,null,null,null,1
+85+,Male,Injury of lower extremity (disorder),Vasovagal collapse with associated closed fracture of hip (disorder),0,0,null,null,null,null,1
+70+,Female,Acute confusion (finding),Delirium secondary to urinary tract infection (disorder),0,0,null,null,null,null,1
+0-4,Male,Poor feeding (finding),Viral illness,0,0,null,null,null,null,1
+05-Aug,Male,Abdominal pain (finding),Constipation,0,0,null,null,null,null,1
+09-Dec,Male,Wheeze (finding),Asthma exacerbation,0,0,null,null,null,null,1
+13-16,Male,Headache (finding),Tension headache,0,0,null,null,null,null,1
+Oct-16,Male,Right lower abdominal pain (finding),Appendicitis,0,0,null,null,null,null,1
+0-4,Female,Fever (finding),Viral infection,0,0,null,null,null,null,1
+05-Aug,Female,Vomiting (finding),Gastroenteritis,0,0,null,null,null,null,1
+09-Dec,Female,Sore throat (finding),Tonsillitis,0,0,null,null,null,null,1
+13-16,Female,Lower abdominal pain (finding),Urinary tract infection,0,0,null,null,null,null,1
+01-Apr,Female,Ear pain (finding),Otitis media,0,0,null,null,null,null,1
+0-4,Male,Fever (Finding),"Nordipox-B Variant (NNV-B), a zoonotic viral infection",0,1,"Purpuric-like Rash, Lethargy, Poor Feeding",Household exposure to pets in an area reporting NNV-B cases,NNV-B detected by PCR from lesion swab,"NB rash, mild lymphocytosis, raised CRP",1
+0-4,Female,Fever (Finding),"Nordipox-B Variant (NNV-B), a zoonotic viral infection",0,1,"Purpuric-like Rash, Irritability, Vomiting",Exposure via caregiver during local NNV-B outbreak,NNV-B1 detected by multiplex PCR from blood,"NB rash, mild lymphocytosis, mild CRP elevation",1
+05-Sep,Male,Fever (Finding),"Nordipox-B Variant (NNV-B), a zoonotic viral infection",0,1,"Rash, Lethargy, Intermittent Weakness, Mild Malaise",Recent exposure to small mammals in an area reporting NNV-B cases,NNV-B detected by PCR from rash swab,"NB rash, mild lymphocytosis, raised CRP",1
+05-Sep,Female,Seizures (Finding),"Nordipox-B Variant (NNV-B), a zoonotic viral infection",0,1,"Fever, Purpuric-like Rash, Lethargy, Myalgia",Household contact with a confirmed NNV-Beta case during local outbreak,B-V variant detected by PCR from skin lesion,"NB rash, mild lymphocytosis, post-ictal confusion",1
+Oct-17,Male,Fever (Finding),"Nordipox-B Variant (NNV-B), a zoonotic viral infection",0,1,"Respiratory Distress, Myalgia, Headache, Purpuric-like Rash, Mild Fatigue",Recent travel to a region with documented Nordipox-X1 transmission,NNV-B confirmed by multiplex PCR from blood sample,"NB rash, tachypnea, mild lymphocytosis",1
+Oct-17,Female,Confusion (Finding),"Nordipox-B Variant (NNV-B), a zoonotic viral infection",0,1,"Purpuric-like Rash, Intermittent Weakness, Headache, Mild Malaise",Exposure to wildlife handling during school outdoor activities in affected area,NB-V detected by PCR from rash swab,"NB rash, altered GCS, mild CRP elevation",1
+18-50,Female,Fever (Finding),"Nordipox-B Variant (NNV-B), a zoonotic viral infection",0,1,"Confusion, Respiratory Distress, Myalgia, Purpuric-like Rash, Fatigue",Returned from international travel where NNV-B1 outbreak was reported,Expanded molecular panel detecting NNV-B1 clade from blood,"NB rash, tachypnea, mild lymphocytosis, raised CRP",1
+18-50,Male,Fever (Finding),"Nordipox-B Variant (NNV-B), a zoonotic viral infection",0,1,"Rash, Mild Fever, Myalgia, Intermittent Weakness","Close contact with infected individual at shared accommodation, spillover window",NNV-B1 detected by multiplex PCR from serum,"NB rash, mild lymphocytosis, CRP mildly raised",1
+51-69,Male,Fever (Finding),"Nordipox-B Variant (NNV-B), a zoonotic viral infection",0,1,"Purpuric-like Rash, Myalgia, Intermittent Weakness, Mild Malaise",History of gardening and exposure to wild rodents in endemic area,NNV-B variant confirmed by PCR from lesion swab,"NB rash, mild lymphocytosis, CRP mildly raised",1
+51-69,Female,Confusion (Finding),"Nordipox-B Variant (NNV-B), a zoonotic viral infection",0,1,"Respiratory Distress, Intermittent Weakness, Rash, Mild Malaise",Recent travel to rural area experiencing NNV-B outbreak,NB-V detected by PCR from blood sample,"NB rash, altered GCS, mild lymphocytosis",1
+70+,Male,Fever (Finding),"Nordipox-B Variant (NNV-B), a zoonotic viral infection",0,1,"Respiratory Distress, Purpuric-like Rash, Lethargy, Fatigue",Close contact with family member recently diagnosed with Nordipox-Zeta,NNV-B1 detected by multiplex PCR from blood,"NB rash, tachypnea, mild lymphocytosis, raised CRP",1
+70+,Female,Lethargy (Finding),"Nordipox-B Variant (NNV-B), a zoonotic viral infection",0,1,"Purpuric-like Rash, Intermittent Weakness, Confusion, Mild Malaise",Residence in long-term care facility with confirmed NNV-Beta cases,Expanded molecular panel detecting NNV-B1 clade from serum,"NB rash, altered GCS, mild lymphocytosis",1

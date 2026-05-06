@@ -1,1 +1,12 @@
 __pycache__
+.env
+.claude
+Claude.md
+.venv
+
+# Ignore all files in data/ except existing tracked files
+data/*
+!data/README.md
+!data/example_elective_admissions_data.csv
+!data/example_emergency_admissions_data.csv
+!data/example_names_input_data.csv

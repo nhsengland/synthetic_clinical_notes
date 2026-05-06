@@ -44,7 +44,7 @@ def generate_random_person(
         names = patient_df[["GENDER", "FIRST", "MIDDLE", "LAST"]].sample(1).values[0]
         
     person_gender = names[0]
-    clean_names = [name for name in names[1:] if name is not None]
+    clean_names = [name for name in names[1:] if not pd.isna(name)]
     person_name = ' '.join(clean_names)
     
     if last_name_only:
@@ -416,8 +416,8 @@ class generate_admissions():
                 ]
 
             
-            df = df[(df["Admitted_Flag"] == 1) & (df["age_lower"] >= PARAMS["pipeline_config"]["minimum_patient_age"]) &  (df["age_upper"] <= PARAMS["pipeline_config"]["maximum_patient_age"])]
-            df = df[columns_to_keep + ["age_lower", "age_upper", "Sex_Category", "count", "Der_Spell_LoS"]]
+            df = df[(df["age_lower"] >= PARAMS["pipeline_config"]["minimum_patient_age"]) &  (df["age_upper"] <= PARAMS["pipeline_config"]["maximum_patient_age"])]
+            df = df[columns_to_keep + ["age_lower", "age_upper", "Sex_Category", "count"]]
             
             return df
 
@@ -819,7 +819,7 @@ class generate_journeys():
                     EVENT_TYPE = event["event_type"],
                     EVENT_TYPE_DESCRIPTION = event_type_description,
                     ADMISSION_DATE = admission_date,
-                    DISCHARE_DATE = discharge_date_string,
+                    DISCHARGE_DATE = discharge_date_string,
                     CURRENT_DATE = event["date"],
                     CURRENT_TIME = event["time"],
                     DAYS_LEFT = days_left,
@@ -1365,7 +1365,7 @@ class generate_clinical_notes():
                 journeys.iterrows(), enumerate(self.patients_and_admissions), self.staff_personas.iterrows()):
                 print(f"Patient {patient_i}:", end  = " ")
     
-                journey_row = [json.loads(journey) for journey in journey_row if journey is not None]
+                journey_row = [json.loads(journey) for journey in journey_row if not pd.isna(journey)]
                 persona_row = json.loads(persona_row.iloc[0])
                 patient_row = clean_patient_details(patient_row)
 
@@ -1385,8 +1385,7 @@ class generate_clinical_notes():
                         if PARAMS["pipeline_config"]["simple_template_only"]:
                             note["Issues"] = self.remove_structures(note["Issues"])
                         else:
-                            for issue, details in note["Issues"].items():
-                                note["Issues"][issue] = clean_outputs([details], "list", self.model)[0]
+                            note["Issues"] = clean_outputs(note["Issues"], "list", self.model)[0]
                 notes, removed_ids = remove_failures(notes)
                 if removed_ids:
                     print(f"Note {removed_ids} removed due to incorrect json compilation")
@@ -1491,7 +1490,7 @@ class add_augmentations():
             self.staff_personas.iterrows(), 
             self.journeys.iterrows()
         ):
-            journey_row = [json.loads(journey) for journey in journey_row if journey is not None]
+            journey_row = [json.loads(journey) for journey in journey_row if not pd.isna(journey)]
             persona_row = json.loads(persona_row.iloc[0])
 
             list_of_staff_personas = {}
@@ -1501,7 +1500,7 @@ class add_augmentations():
             print(f"Patient {notes_i}")
             augmented_notes = []
 
-            for note_i, note in enumerate([n for n in notes_row if n is not None]):
+            for note_i, note in enumerate([n for n in notes_row if not pd.isna(n)]):
                 print(f"Note: {note_i}:", end = " ")
                 note = json.loads(note)
 
@@ -1653,7 +1652,7 @@ class save_final_outputs():
             encounters_output_data.append(encounter_data.copy())
             
             # journey metrics
-            journey_row = [json.loads(j) for j in journey_row.to_list() if j is not None]
+            journey_row = [json.loads(j) for j in journey_row.to_list() if not pd.isna(j)]
             journey_eval = get_journey_evaluation_details(patient_admission,
                                                           journey_row,
                                                           patient_admission["admission_details"]["expected_length_of_stay"],
@@ -1663,7 +1662,7 @@ class save_final_outputs():
             
             # clinical notes and journeys
             for event, note in zip(journey_row, notes_row):
-                if note is not None:
+                if not pd.isna(note):
                     note = json.loads(note)
                     note_with_metadata = prepare_note_data(patient_admission,
                                                        event,
@@ -1672,7 +1671,7 @@ class save_final_outputs():
                     notes_output_data.append(note_with_metadata.copy())
                 
                     evaluation_data = prepare_evaluation_data(note_with_metadata.copy(),
-                                                   [j for j in journey_row if j is not None],
+                                                   [j for j in journey_row if not pd.isna(j)],
                                                    event,
                                                    patient_data,
                                                    run_name,
@@ -1685,11 +1684,11 @@ class save_final_outputs():
         # Saving
         print("Saving Data...", end  = " ")
         if self.generate_patient_information:
-            write_dataset(patients_output_data, "patients_output")
-        write_dataset(admissions_output_data, "admissions")
-        write_dataset(encounters_output_data, "encounters")
-        write_dataset(journey_metrics, "journey_metrics")
-        write_dataset(notes_output_data, "clinical_notes")
-        write_dataset(evaluation_output_df, "journeys")
+            write_dataset(patients_output_data, "patients_output", True)
+        write_dataset(admissions_output_data, "admissions", True)
+        write_dataset(encounters_output_data, "encounters", True)
+        write_dataset(journey_metrics, "journey_metrics", True)
+        write_dataset(notes_output_data, "clinical_notes", True)
+        write_dataset(evaluation_output_df, "journeys", True)
 
         print("DONE")

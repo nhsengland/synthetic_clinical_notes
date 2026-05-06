@@ -34,6 +34,8 @@ The pipeline is highly configurable using `config/params.py` and `config/config.
 
 Whilst the project was developed on Foundry, it was designed to be easily adaptable to other platforms.
 
+It is currently designed to run locally using the `foundry_sdk` package. However, we hope to keep developing this project to work on more platforms with more LLM providers. 
+
 The pipeline was tested with Python 3.12.12.
 
 ### Getting Started

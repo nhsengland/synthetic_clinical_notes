@@ -1,6 +1,6 @@
 # Changing Functions
 
-This pipeline was written and tested in [code workspaces](https://www.palantir.com/docs/foundry/code-workspaces/overview) in [Palantir Foundry](https://www.palantir.com/platforms/foundry/).
+This pipeline was written and tested in [code workspaces](https://www.palantir.com/docs/foundry/code-workspaces/overview) in [Palantir Foundry](https://www.palantir.com/platforms/foundry/). It has since been adapted to run locally.
 
 As such, two functions written within `src/processing.py` will need to be adapted if you plan on using this pipeline on another platform or locally.
 
@@ -63,6 +63,76 @@ If all attempts fail, the function should:
 - log the failure
 - return None.
 
+**Example Function for working in the FDP**
+
+```python
+
+from foundry.transforms import Dataset
+from language_model_service_api.languagemodelservice_api_completion_v3 import GptChatCompletionRequest
+from language_model_service_api.languagemodelservice_api import ChatMessage, ChatMessageRole
+from palantir_models.models import OpenAiGptChatLanguageModel
+
+def call_llm(prompt: str, model: str = "GPT_4o", temp: float = 0.7, max_attempts: int = 3, chat_history = None) -> str:
+    """
+    Send a prompt to a chat-based LLM and return the model's text response.
+
+    Builds a chat completion request using the provided prompt and optional
+    conversation history, calls the model, and returns the raw response text.
+    If the request fails, it retries up to `max_attempts` times.
+
+    Parameters
+    ----------
+    prompt : str
+        The user prompt appended as the latest message in the conversation.
+
+    model : object
+        Model client implementing `create_chat_completion(request)`.
+
+    temp : float, default=0.7
+        Sampling temperature controlling response randomness.
+
+    max_attempts : int, default=3
+        Number of retry attempts if the LLM call fails.
+
+    chat_history : list[str] | None, default=None
+        Optional alternating list of messages:
+        [user_0, assistant_0, user_1, assistant_1, ...].
+        The prompt is added as the final user message.
+
+    Returns
+    -------
+    str
+        Raw text content from the model response, or None if all attempts fail.
+    """
+    try:
+        model = OpenAiGptChatLanguageModel.get(model)
+    except:
+        raise Exception(f"No model called {model}")
+    
+    if not chat_history:
+        request = GptChatCompletionRequest([
+            ChatMessage(ChatMessageRole.USER, prompt)
+        ], temperature = temp)
+    else:
+        history = [ChatMessage(ChatMessageRole.USER, chat_history[i]) if i%2 == 0 else ChatMessage(ChatMessageRole.ASSISTANT, chat_history[i]) for i in range(len(chat_history))]
+        request = GptChatCompletionRequest(
+            history + [ChatMessage(ChatMessageRole.USER, prompt)],
+            temperature = temp)
+        
+    # Call the LLM
+    for attempt in range(max_attempts):
+        try:
+            response = model.create_chat_completion(request)
+            raw_content = response.choices[0].message.content
+        except Exception as e:
+            print(f"LLM call failed with error: {e} on attempt {attempt + 1}/{max_attempts}. Retrying...")
+            time.sleep(1)
+        else:
+            return raw_content
+    else:
+        print (f"Failed after {max_attempts} attempts.")
+```
+
 ## 2. `read_write_data`
 
 The `read_write_data` function acts as the abstraction layer between the pipeline and the underlying data storage system.
@@ -110,3 +180,54 @@ Any replacement implementation should preserve the following behavior:
 4. DataFrame Compatibility
 
 - All reads must return data in a pandas DataFrame format, even if the underlying system uses a different structure (e.g., Arrow tables or SQL query results).
+
+**Example Function for working in the FDP**
+
+```python
+
+from foundry.transforms import Dataset
+from language_model_service_api.languagemodelservice_api_completion_v3 import GptChatCompletionRequest
+from language_model_service_api.languagemodelservice_api import ChatMessage, ChatMessageRole
+from palantir_models.models import OpenAiGptChatLanguageModel
+
+
+def read_write_data(table_name: str, read_or_write: str, data: pd.DataFrame = None) -> pd.DataFrame:
+    """
+    Read from or write a pandas DataFrame to a dataset table.
+
+    Depending on `read_or_write`, this function either retrieves a table
+    as a pandas DataFrame or writes the provided DataFrame to the table.
+
+    Parameters
+    ----------
+    table_name : str
+        Name of the dataset table to read from or write to.
+
+    read_or_write : str
+        Operation to perform: either `"read"` or `"write"`.
+
+    data : pd.DataFrame | None, default=None
+        DataFrame to write when `read_or_write="write"`. Ignored for reads.
+
+    Returns
+    -------
+    pd.DataFrame | None
+        Returns the table as a pandas DataFrame when reading.
+        Returns None when writing.
+
+    Raises
+    ------
+    Exception
+        If `read_or_write` is not `"read"` or `"write"`, or if writing
+        without providing `data`.
+    """
+
+    if read_or_write == "read":
+        return Dataset.get(table_name).read_table(format="pandas")
+    elif read_or_write == "write" and data is not None:
+        Dataset.get(table_name).write_table(data)
+    else:
+        raise Exception("Error: Check read_or_write is one of 'read' or 'write' and data is not None")
+
+    return None
+```
