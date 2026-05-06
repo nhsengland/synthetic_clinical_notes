@@ -1,6 +1,6 @@
 # PARAMS
 
-# This contains the basic params needed to run the pipeline. Please see config.py to see more cahnge more details of the pipeline.
+# This contains the basic params needed to run the pipeline. Please see config.py to see more change more details of the pipeline.
 
 PARAMS = {
     "pipeline_config": {
@@ -35,8 +35,8 @@ PARAMS = {
         "combine_sections": True, # If True then some staff members will combine template sections when writing patient notes.
         "add_signature": True, # If True, adds staff signature to end of note.
         "bias_testing": None, # If not None, an array of ["gender"].
-        "minimum_patient_age": 0, # Minimum patient age when generating patient admission
-        "maximum_patient_age": 18,# Maximum patient age when generating patient admission
+        "minimum_patient_age": 18, # Minimum patient age when generating patient admission
+        "maximum_patient_age": 90,# Maximum patient age when generating patient admission
         "site_name": "Bramble Trust", # None, or name of trust
         "site_code": "BRT12", # None, or code of trust
         "elective_admissions_dataset" : "example_elective_admissions_data", # Name of dataset to read elective admissions
