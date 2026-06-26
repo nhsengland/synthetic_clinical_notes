@@ -92,3 +92,19 @@ of the [Open Government 3.0][ogl] licence.
 - Will Poulett
 
 If you have questions, please [contact us](mailto:england.datascience@nhs.net).
+
+### Cite this work:
+
+If using this work, please cite our data paper:
+
+```
+@misc{poulett2026pipelinegeneratinglongitudinalsynthetic,
+      title={A Pipeline for Generating Longitudinal Synthetic Clinical Notes Using Large Language Models}, 
+      author={William Poulett},
+      year={2026},
+      eprint={2606.26879},
+      archivePrefix={arXiv},
+      primaryClass={cs.AI},
+      url={https://arxiv.org/abs/2606.26879}, 
+}
+```
