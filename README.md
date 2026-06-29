@@ -100,7 +100,7 @@ If using this work, please cite our data paper:
 ```
 @misc{poulett2026pipelinegeneratinglongitudinalsynthetic,
       title={A Pipeline for Generating Longitudinal Synthetic Clinical Notes Using Large Language Models}, 
-      author={William Poulett},
+      author={William Poulett and Alice Waterhouse and Ben Wallace and Scarlett Kynoch and Amaia Imaz Blanco and Michael Spence and Jonathan Pearson},
       year={2026},
       eprint={2606.26879},
       archivePrefix={arXiv},
